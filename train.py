@@ -2,16 +2,19 @@
 import os
 import numpy as np
 import tensorflow as tf
+import SharedArray as sa
 from bgan.mnist.models import BinaryGAN, GAN
 from config import CONFIG
 
+
 def load_data():
-    """Load and return the training data."""
+    """
+    Load and return the training data.
+    """
     print('[*] Loading data...')
 
     # Load data from SharedArray
     if CONFIG['data']['training_data_location'] == 'sa':
-        import SharedArray as sa
         x_train = sa.attach(CONFIG['data']['training_data'])
 
     # Load data from hard disk
@@ -25,6 +28,7 @@ def load_data():
             x_train = np.load(filepath)
 
     return x_train
+
 
 def main():
     """Main function."""
@@ -54,6 +58,7 @@ def main():
 
         # Train the model
         gan.train(x_train, CONFIG['train'])
+
 
 if __name__ == '__main__':
     main()

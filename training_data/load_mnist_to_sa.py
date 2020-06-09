@@ -4,6 +4,7 @@ import argparse
 import numpy as np
 import SharedArray as sa
 
+
 def parse_arguments():
     """Parse and return the command line arguments."""
     parser = argparse.ArgumentParser()
@@ -22,10 +23,12 @@ def parse_arguments():
     return (args.dataset_root, args.prefix, args.merge, args.binary,
             args.labels, args.onehot)
 
+
 def save_to_sa(name, data):
     """Save data to SharedArray."""
     arr = sa.create(name, data.shape, data.dtype)
     np.copyto(arr, data)
+
 
 def load(dataset_root, prefix, merge, binary, labels, onehot):
     """Load and save the dataset to SharedArray."""
@@ -90,10 +93,12 @@ def load(dataset_root, prefix, merge, binary, labels, onehot):
             filename = '_'.join((prefix, 'mnist_y'))
         save_to_sa(filename, np.concatenate((trY, teY)))
 
+
 def main():
     """Main function"""
     dataset_root, prefix, merge, binary, labels, onehot = parse_arguments()
     load(dataset_root, prefix, merge, binary, labels, onehot)
+
 
 if __name__ == '__main__':
     main()

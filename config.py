@@ -37,11 +37,12 @@ SETUP = {
     # dictionary `SETUP`, so remember to provide the experiment name manually
     # (so that you won't overwrite a trained model).
 
-    'training_data': 'herman_binarized_mnist_x',
+    'training_data': '_binarized_mnist_x',
     # Filename of the training data. The training data can be loaded from a npy
     # file in the hard disk or from the shared memory using SharedArray package.
 
     'training_data_location': 'sa',
+    # 'training_data_location': 'hd',
     # Location of the training data. 'hd' to load from a npy file stored in the
     # hard disk. 'sa' to load from shared array using SharedArray package.
 
