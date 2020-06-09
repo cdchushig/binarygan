@@ -110,3 +110,7 @@ analysis/
 data/
 exp/
 logs/
+
+# Project
+.idea
+training_data/mnist
